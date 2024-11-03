@@ -15,6 +15,16 @@ export const tamanhoFontes = {
 };
 
 export const EstilosGlobais = StyleSheet.create({
+    botaoVoltar: {
+        position: 'absolute',
+        top: 50,
+        padding: 10,
+        left: 10,
+    },
+    botaoVoltarImagem: {
+        width: 50,
+        height: 50,
+    },
     botao: {
         alignItems: "center",
         justifyContent: "center",
@@ -47,6 +57,7 @@ export const EstilosGlobais = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 6,
         marginBottom: 24,
+        backgroundColor: cores.branco,
     },
     caixaTexto: {
         paddingLeft: 10,

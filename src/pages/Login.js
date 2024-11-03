@@ -1,11 +1,12 @@
 import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import LoginEstilo from './styles/LoginEstilo'
+import LoginStyle from './styles/LoginStyle'
 import logo from '../assets/images/logo.png'
 import InputRB from '../components/InputRB'
 import { useState } from 'react';
 import BotaoRB from '../components/BotaoRB'
 import { useNavigation } from '@react-navigation/native'
+import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB'
 
 export default function Login({ route }) {
   const navigation = useNavigation();
@@ -71,41 +72,44 @@ export default function Login({ route }) {
           }
 
   return (
-    <View style={LoginEstilo.container}>
-            <View style={LoginEstilo.logoContainer}>
-               <Image source={logo} style={LoginEstilo.logo}></Image>
+    <View style={LoginStyle.container}>
+
+        <BotaoVoltarOuSairRB acao={() => navigation.goBack()}/>
+
+            <View style={LoginStyle.logoContainer}>
+               <Image source={logo} style={LoginStyle.logo}></Image>
             </View>
-            <View style={LoginEstilo.descriptionContainer}>
-                <Text style={LoginEstilo.descriptionText}>Entre como 
-                    <Text style={LoginEstilo.descriptionBoldText}> {tipoUsuario}</Text>
+            <View style={LoginStyle.descriptionContainer}>
+                <Text style={LoginStyle.descriptionText}>Entre como 
+                    <Text style={LoginStyle.descriptionBoldText}> {tipoUsuario}</Text>
                 </Text>
             </View>
-            <View style={LoginEstilo.inputContainer}>
+            <View style={LoginStyle.inputContainer}>
                 <InputRB
                     titulo={dadoLogin()}
                     value={usuario}
                     onChangeText={informaUsuario}
-                    style={LoginEstilo.input}
+                    style={LoginStyle.input}
                     >
                 </InputRB>
                 <InputRB
                     titulo={'Senha'}
-                    style={LoginEstilo.input}
+                    style={LoginStyle.input}
                     >
                 </InputRB>
             </View>
-            <View style={LoginEstilo.recuperarSenhaContainer}>
+            <View style={LoginStyle.recuperarSenhaContainer}>
                 <TouchableOpacity onPress={() => navigation.navigate('RedefinirSenha')}>
-                    <Text style={LoginEstilo.recuperarSenhaText}>Esqueci minha
-                            <Text style={LoginEstilo.recuperarSenhaBoldText}> Senha</Text>
+                    <Text style={LoginStyle.recuperarSenhaText}>Esqueci minha
+                            <Text style={LoginStyle.recuperarSenhaBoldText}> Senha</Text>
                     </Text>
                 </TouchableOpacity>
             </View>
-            <View style={LoginEstilo.containerBotao}>
+            <View style={LoginStyle.containerBotao}>
                 <BotaoRB 
                         titulo={'Entrar'}
-                        textoCustomEstilo={LoginEstilo.textoBotao}
-                        botaoCustomEstilo={LoginEstilo.botao}>
+                        textoCustomEstilo={LoginStyle.textoBotao}
+                        botaoCustomEstilo={LoginStyle.botao}>
                 </BotaoRB>
             </View>
     </View>        

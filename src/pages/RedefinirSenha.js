@@ -5,12 +5,16 @@ import { useNavigation } from '@react-navigation/native'
 import logo from '../assets/images/logo.png'
 import InputRB from '../components/InputRB'
 import BotaoRB from '../components/BotaoRB'
+import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB'
 
 export default function RedefinirSenha() {
     const navigation = useNavigation();
 
   return (
     <View style={RedefinirSenhaStyle.container}>
+        
+        <BotaoVoltarOuSairRB acao={() => navigation.goBack()} />
+
             <View style={RedefinirSenhaStyle.logoContainer}>
                <Image source={logo} style={RedefinirSenhaStyle.logo}></Image>
             </View>

@@ -12,6 +12,7 @@ export default StyleSheet.create({
         height: 'auto',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 100,
         overflow: 'hidden'
     },
     logo : {

@@ -5,12 +5,12 @@ export default StyleSheet.create({
     container: {
         flex: 1,
         justifyContent: 'center',
-        alignItems: 'center',
     },
     logoContainer: {
         width: '100%',
         height: 'auto',
         alignItems: 'center',
+        marginTop: 100,
         justifyContent: 'center',
         overflow: 'hidden'
     },
@@ -27,54 +27,62 @@ export default StyleSheet.create({
     },
     descriptionText: {
         color: cores.azul,
-        fontSize: tamanhoFontes.media,
+        fontSize: tamanhoFontes.grande,
         textAlign: 'center'
     },
     descriptionBoldText: {
         fontWeight: 'bold',
         color: cores.azul,
-        fontSize: tamanhoFontes.media,
+        fontSize: tamanhoFontes.grande,
         textAlign: 'center'
     },
-    inputContainer: {
-        alignItems: 'center',
-        justifyContent: 'center',
-        flexDirection: 'column',
-        marginBottom: 5,
-    },
-    input: {
-        paddingLeft: 10,
-        width: "90%",
-    },
-    recuperarSenhaContainer: {
-        paddingHorizontal: 10,
-        alignItems: 'center',
-        justifyContent: 'center'
-    },
-    recuperarSenhaText: {
+    lineText: {
         color: cores.azul,
-        fontSize: tamanhoFontes.pequena
-    },
-    recuperarSenhaBoldText: {
-        color: cores.azul,
-        fontSize: tamanhoFontes.pequena,
-        fontWeight: 'bold'
+        fontSize: tamanhoFontes.media,
+        textAlign: 'center'
     },
     containerBotao: {
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
+        flexDirection: 'column',
         marginBottom: 10,
-        marginTop: 30,
     },
-    botao: {
-        width: "70%",
+    botaoEmpresa: {
         backgroundColor: cores.laranja,
         flexDirection: 'row',
-        marginBottom: 5,
-        paddingLeft: 10,
+        alignItems: 'center',
     },
-    textoBotao: {
+    textoBotaoEmpresa: {
         color: cores.branco,
+        flexDirection: 'row',
     },
+    infoBotaoEmpresa: {
+        color: cores.branco,
+        fontWeight: 'bold'
+    },
+    botaoPassageiro: {
+        backgroundColor: cores.branco,
+    },
+    textoBotaoPassageiro: {
+        color: cores.preto,
+        flexDirection: 'row',
+    },
+    infoBotaoPassageiro: {
+        color: cores.preto,
+        fontWeight: 'bold'
+    },
+    registerContainer: {
+        paddingHorizontal: 20,
+        alignItems: 'center',
+        justifyContent: 'center'
+    },
+    registerText: {
+        color: cores.azul,
+        fontSize: tamanhoFontes.pequena
+    },
+    registerBoldText: {
+        color: cores.azul,
+        fontSize: tamanhoFontes.pequena,
+        fontWeight: 'bold'
+    }
 });

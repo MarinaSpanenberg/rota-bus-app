@@ -1,8 +1,10 @@
-import { Image, Text, TouchableOpacity, View } from 'react-native';
-import TelaInicialEstilo from './styles/TelaInicialEstilo';
+import { BackHandler, Image, Text, TouchableOpacity, View } from 'react-native';
+import TelaInicialEstilo from './styles/TelaInicialStyle';
 import BotaoRB from '../components/BotaoRB';
 import logo from '../assets/images/logo.png'
 import { useState } from 'react';
+import { useNavigation } from '@react-navigation/native';
+import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB';
 
 export default function TelaInicial({ navigation }) {
     const [tipoUsuario, setTipoUsuario] = useState('')
@@ -12,8 +14,19 @@ export default function TelaInicial({ navigation }) {
         navigation.navigate('Login', { tipoUsuario: tipo }); 
     };
 
+    const navegarParaCadastro = () => {
+        navigation.navigate('Cadastro')
+    };
+
+    const nav = useNavigation();
+
     return (
         <View style={TelaInicialEstilo.container}>
+
+            <BotaoVoltarOuSairRB 
+                telaInicial={true}
+                acao={() => BackHandler.exitApp()} />
+
             <View style={TelaInicialEstilo.logoContainer}>
                <Image source={logo} style={TelaInicialEstilo.logo}></Image>
             </View>
@@ -39,7 +52,7 @@ export default function TelaInicial({ navigation }) {
                 </BotaoRB>
             </View>  
             <View style={TelaInicialEstilo.registerContainer}>
-                <TouchableOpacity>
+                <TouchableOpacity onPress={() => navegarParaCadastro()}>
                     <Text style={TelaInicialEstilo.registerText}>Não possui uma conta?
                         <Text style={TelaInicialEstilo.registerBoldText}> Cadastre-se</Text>
                     </Text>
