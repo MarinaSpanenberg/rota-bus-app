@@ -7,10 +7,12 @@ import { useState } from 'react';
 import BotaoRB from '../components/BotaoRB'
 import { useNavigation } from '@react-navigation/native'
 import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB'
+import { useTipoUsuario } from '../context/ContextoDoUsuario';
 
 export default function Login({ route }) {
   const navigation = useNavigation();
-
+  const {tipoUsuario} = useTipoUsuario();
+  
     const [usuario, setUsuario] = useState(null);
     const [CNPJ, setCNPJ] = useState(null);
     const [senha, setSenha] = useState(null);
@@ -18,8 +20,6 @@ export default function Login({ route }) {
     const [erroSenha, setErroSenha] = useState(false);
     const [loading, setLoading] = useState(false);
     const [passwordInvisible, setPasswordInvisible] = useState(true);
-
-    const {tipoUsuario} = route.params;
 
     function dadoLogin() {
       const dado = tipoUsuario === 'Empresa' ? 'CNPJ' : 'Usuário';
@@ -108,6 +108,7 @@ export default function Login({ route }) {
             <View style={LoginStyle.containerBotao}>
                 <BotaoRB 
                         titulo={'Entrar'}
+                        acao={() => navigation.navigate('BuscarRotas', {tipoUsuario})}
                         textoCustomEstilo={LoginStyle.textoBotao}
                         botaoCustomEstilo={LoginStyle.botao}>
                 </BotaoRB>

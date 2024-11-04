@@ -2,12 +2,12 @@ import { BackHandler, Image, Text, TouchableOpacity, View } from 'react-native';
 import TelaInicialEstilo from './styles/TelaInicialStyle';
 import BotaoRB from '../components/BotaoRB';
 import logo from '../assets/images/logo.png'
-import { useState } from 'react';
 import { useNavigation } from '@react-navigation/native';
 import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB';
+import { useTipoUsuario } from '../context/ContextoDoUsuario';
 
 export default function TelaInicial({ navigation }) {
-    const [tipoUsuario, setTipoUsuario] = useState('')
+    const {tipoUsuario, setTipoUsuario} = useTipoUsuario();
 
     const navegarParaLogin = (tipo) => {
         setTipoUsuario(tipo);

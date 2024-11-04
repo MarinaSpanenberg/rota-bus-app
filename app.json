@@ -28,7 +28,12 @@
         "expo-font",
       {
         "fonts": 
-        ["./src/assets/fonts/Aurebesh-English.ttf"]
+        ["./src/assets/fonts/PoppinsRegular.ttf",
+          "./src/assets/fonts/Poppins-Medium.ttf",
+          "./src/assets/fonts/Poppins-SemiBold.ttf",
+          "./src/assets/fonts/Poppins-Bold.ttf",
+          "./src/assets/fonts/Poppins-ExtraBold.ttf"
+        ]
       }
     ]
   ] 
