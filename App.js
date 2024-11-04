@@ -7,12 +7,14 @@ import Cadastro from './src/pages/Cadastro';
 import BuscarRotas from './src/pages/BuscarRotas';
 import Menu from './src/pages/Menu';
 import { SetarUsuario } from './src/context/ContextoDoUsuario';
+import FontLoader from './src/components/FontLoader';
 
 export default function App() {
   const Stack = createStackNavigator();
 
   return (
     <SetarUsuario>
+      <FontLoader>
       <NavigationContainer>
         <Stack.Navigator initialRouteName='TelaInicial'>
           <Stack.Screen name='TelaInicial' component={TelaInicial} options={{headerShown: false}}/>
@@ -23,6 +25,7 @@ export default function App() {
           <Stack.Screen name='Menu' component={Menu} options={{headerShown: false}}/>
         </Stack.Navigator>  
       </NavigationContainer>
+      </FontLoader>
     </SetarUsuario>  
   );
 }

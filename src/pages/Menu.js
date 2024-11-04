@@ -23,7 +23,7 @@ export default function Menu() {
 
         <View style={MenuStyle.logoContainer}>
                <Image source={tipoUsuario === 'Passageiro' ? passageirosIcone : empresaIcone} style={MenuStyle.logo} />
-               <Text style={MenuStyle.tipoUsuarioTexto}>{tipoUsuario === 'Passageiro' ? 'Usuário' : 'Empresa'}</Text>
+               <Text style={[MenuStyle.tipoUsuarioTexto,{fontFamily: 'Poppins'}]}>{tipoUsuario === 'Passageiro' ? 'Usuário' : 'Empresa'}</Text>
             </View>
 
         <View style={MenuStyle.botoesContainer}>    

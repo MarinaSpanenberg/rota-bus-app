@@ -12,22 +12,23 @@ export default function BuscarRotas() {
     const {tipoUsuario} = useTipoUsuario();
 
     function dadoBuscar() {
-        const dado = tipoUsuario === 'Passageiro' ? 'Buscar Rotas' : 'Localizar Frota';
+        const dado = tipoUsuario === 'Passageiro' ? 'Buscar Rotas' : 
+        'Digite a placa do Ônibus\nque deseja buscar';
         return dado;
       }
 
     return (
-      <View style={BuscarRotasStyle.container}>
-      
-            <BotaoMenuRB acao={() => navigation.navigate('Menu', {tipoUsuario})} />
-        <View style={BuscarRotasStyle.botoesTopoContainer}> 
-            <Text style={[{fontFamily: 'PoppinsExtraBold'}, BuscarRotasStyle.texto]}>RotaBus</Text>
-        </View> 
+        <View style={BuscarRotasStyle.container}>
+        
+              <BotaoMenuRB acao={() => navigation.navigate('Menu', {tipoUsuario})} />
+          <View style={BuscarRotasStyle.botoesTopoContainer}> 
+              <Text style={[{fontFamily: 'PoppinsExtraBold'}, BuscarRotasStyle.texto]}>RotaBus</Text>
+          </View> 
 
-             <BotaoPesquisarRB
-                titulo={dadoBuscar()}   
-                textoCustomEstilo={{fontFamily: 'PoppinsMedium'}}
-            />
-      </View>
+              <BotaoPesquisarRB
+                  titulo={dadoBuscar()}   
+                  textoCustomEstilo={{fontFamily: 'PoppinsMedium'}}
+              />
+        </View>
     ) 
 }
