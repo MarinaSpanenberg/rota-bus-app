@@ -78,6 +78,7 @@ export default function Menu() {
             <View style={MenuStyle.containerBotaoSair}>
                 <BotaoRB BotaoRB
                         titulo={'Sair do perfil'}
+                        acao={() => navigation.navigate('TelaInicial')}
                         textoCustomEstilo={[MenuStyle.textoBotaoSair, {fontFamily: 'PoppinsMedium'}]}
                         botaoCustomEstilo={MenuStyle.botaoSair}>
                 </BotaoRB>
