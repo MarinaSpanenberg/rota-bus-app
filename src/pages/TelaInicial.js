@@ -7,6 +7,7 @@ import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB';
 import { useTipoUsuario } from '../context/ContextoDoUsuario';
 
 export default function TelaInicial({ navigation }) {
+
     const {tipoUsuario, setTipoUsuario} = useTipoUsuario();
 
     const navegarParaLogin = (tipo) => {

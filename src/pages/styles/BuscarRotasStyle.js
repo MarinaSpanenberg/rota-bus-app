@@ -18,4 +18,18 @@ export default StyleSheet.create({
         color: cores.azul,
         fontSize: tamanhoFontes.intermediaria,
     },
+    pesquisaContainer: {
+        flexDirection: 'row',
+        alignItems: 'center',
+        width: '100%',
+        height: '100%',
+        top: 350,
+        bottom: 500,
+        backgroundColor: cores.azul,
+    },
+    pesquisaTexto: {
+        color: cores.branco,
+        fontSize: tamanhoFontes.media,
+        marginLeft: 10,
+    }
 });
