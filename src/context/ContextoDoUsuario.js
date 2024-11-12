@@ -3,7 +3,7 @@ import React, { createContext, useState, useContext } from "react";
 const ContextoDoUsuario = createContext();
 
 export const SetarUsuario = ({children}) => {
-    const [tipoUsuario, setTipoUsuario] = useState(null);
+    const [tipoUsuario, setTipoUsuario] = useState('');
 
     return (
         <ContextoDoUsuario.Provider value={{ tipoUsuario, setTipoUsuario}}>
