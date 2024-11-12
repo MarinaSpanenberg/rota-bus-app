@@ -1,7 +1,6 @@
 import { Text, TouchableOpacity, StyleSheet, View, TextInput } from 'react-native'
 import React, {useState} from 'react'
 import { cores, EstilosGlobais } from '../pages/styles/EstilosGlobais'
-import { Searchbar, Button } from 'react-native-paper';
 
 export default function BarraDePesquisaRB({placeholder}) {
   const [searchQuery, setSearchQuery] = React.useState('');
