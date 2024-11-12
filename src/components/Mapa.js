@@ -27,8 +27,8 @@ const Map = () => {
 
   // Define as coordenadas do mapa
   const initialRegion = {
-    latitude: location ? location.coords.latitude : -23.55052,
-    longitude: location ? location.coords.longitude : -46.633308,
+    latitude: location ? location.coords.latitude : -28.2612,
+    longitude: location ? location.coords.longitude : --52.4083,
     latitudeDelta: 0.0922,
     longitudeDelta: 0.0421,
   };
