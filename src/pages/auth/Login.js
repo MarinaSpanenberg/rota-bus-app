@@ -25,18 +25,18 @@ export default function Login() {
 
   const { setUser } = useAuth();
 
-  function validateUserInputsInSignUp() {
+  async function signInWithEmail() {
     if (!email || !password) {
       Alert.alert("Por favor, preencha os campos de email e senha.");
       return;
     }
-  }
-
-  async function signInWithEmail() {
-      validateUserInputsInSignUp();
     
       const response = await loginUser(email, password);
       console.log(response);
+      if (response.success == false) {
+        Alert.alert("Login não realizado com sucesso");
+        return;
+      }
       setUser(response.user);
       Alert.alert("Login realizado com sucesso!");
       navigation.navigate('BuscarRotas');
@@ -45,7 +45,7 @@ export default function Login() {
 
   return (
     <View style={LoginStyle.container}>
-      <BotaoVoltarOuSairRB acao={() => navigation.goBack()} />
+      <BotaoVoltarOuSairRB acao={() => navigation.navigate('TelaInicial')} />
 
       <View style={LoginStyle.logoContainer}>
             <Image source={logo} style={LoginStyle.logo}></Image>

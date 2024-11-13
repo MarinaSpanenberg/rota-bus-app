@@ -41,11 +41,32 @@ export default function Cadastro() {
     }
   }
 
+  const handleMutualInputForUser = (field, value) => {
+    if (field === 'username') {
+      setUsername(value);
+      if (value) setInterprisename("");
+    } else if (field === 'interprisename') {
+      setInterprisename(value);
+      if (value) setUsername("");
+    }
+  };
+
   async function signUpWithEmail() {
-    validateUserInputsInSignUp();
+    if ((!username && !interprisename) || !email || !password || !confirmPassword) {
+      Alert.alert("Por favor, preencha todos os campos.");
+      return;
+    }
+    if (password !== confirmPassword) {
+      Alert.alert("As senhas não coincidem. Tente novamente.");
+      return;
+    }
 
     const response = await signUpUser({ email, password, username, interprisename });
     console.log(response);
+    if (response.success == false) {
+      Alert.alert("Cadastro não realizado com sucesso");
+      return;
+    }
     setUser(response.user);
     Alert.alert("Cadastro realizado com sucesso.");
     navigation.navigate('Login');
@@ -59,9 +80,12 @@ export default function Cadastro() {
         <InputRB
           titulo="Usuário para Passageiro"
           value={username}
-          onChangeText={setUsername}
-          // editable={!nomeEmpresa}
-          textCustomStyle={CadastroStyle.textoInput}
+          onChangeText={(text) => handleMutualInputForUser('username', text)}
+          editable={!interprisename}
+          textCustomStyle={[
+            CadastroStyle.textoInput,
+            interprisename ? { color: 'gray' } : {}
+          ]}
           style={CadastroStyle.input}
         />
 
@@ -70,9 +94,12 @@ export default function Cadastro() {
         <InputRB
           titulo="Nome da Empresa"
           value={interprisename}
-          onChangeText={setInterprisename}
-          // editable={!usuarioPassageiro}
-          textCustomStyle={CadastroStyle.textoInput}
+          onChangeText={(text) => handleMutualInputForUser('interprisename', text)}
+          editable={!username}
+          textCustomStyle={[
+            CadastroStyle.textoInput,
+            username ? { color: 'gray' } : {}
+          ]}
           style={CadastroStyle.input}
         />
         <InputRB
