@@ -50,7 +50,6 @@ export default function CadastroOnibus() {
             <View style={CadastroOnibusStyle.containerBotaoSalvar}>
                 <BotaoRB 
                         titulo={'Salvar alterações'}
-                        acao={}
                         textoCustomEstilo={[CadastroOnibusStyle.textoBotaoSalvar, {fontFamily: 'PoppinsMedium'}]}
                         botaoCustomEstilo={CadastroOnibusStyle.botaoSalvar}>
                 </BotaoRB>
