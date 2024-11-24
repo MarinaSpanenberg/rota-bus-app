@@ -37,6 +37,16 @@ export default StyleSheet.create({
     textoNomeDaParada: {
         color: cores.branco,
     },
+    favoritoContainer: {
+        position: 'absolute',
+        width: '100%',
+        top: 150,
+    },
+    favorito: {
+        height: 20,
+        marginBottom: 10,
+        resizeMode: 'contain'    
+    },
     onibusImagemContainer: {
         position: 'absolute',
         padding: 20,
