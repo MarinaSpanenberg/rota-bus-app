@@ -5,27 +5,27 @@ import * as Location from 'expo-location';
 import paradaIcon from '../assets/images/paradaIcon.png';
 import localizacaoUsuarioIcon from '../assets/images/localizacaoUsuarioIcon.png';
 import { useNavigation } from '@react-navigation/native';
+import { supabase } from '../services/supabase';
 
 const Map = () => {
   const navigation = useNavigation();
   const [location, setLocation] = useState(null);
   const [errorMsg, setErrorMsg] = useState(null);
-  const [customMarkers, setCustomMarkers] = useState([]);
+  const [paradas, setParadas] = useState([]);
 
-  const paradas = [
-    {
-      name: 'Av. Presidente Vargas - Em frente ao Cecy Leite Costa',
-      latitude: -28.2690308,
-      longitude: -52.3896466, // Corrigido para longitude real
-    },
-    {
-      name: 'Av. Presidente Vargas - Em frente ao CEPV',
-      latitude: -28.2664509,
-      longitude: -52.3964319, // Corrigido para longitude real
-    },
-  ];
+  const getParadas = async () => {
+    const { data, error } = await supabase.from('bus_stops').select('*');
+    if (error) {
+      console.log('Erro ao obter paradas:', error);
+    } else {
+      setParadas(data);
+    }
+  };
 
-  // Função para obter a localização atual
+  useEffect(() => {
+    getParadas(); 
+  }, []);
+
   const getCurrentLocation = async () => {
     let { status } = await Location.requestForegroundPermissionsAsync();
     if (status !== 'granted') {
@@ -69,9 +69,9 @@ const Map = () => {
           />
         )}
 
-        {paradas.map((item, index) => (
+        {paradas.map((item) => (
           <Marker
-            key={index}
+            key={item.id}
             coordinate={{
               latitude: item.latitude,
               longitude: item.longitude,
