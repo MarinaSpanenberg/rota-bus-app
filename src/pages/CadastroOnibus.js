@@ -1,58 +1,58 @@
-import { View, Text, Image, TouchableOpacity } from 'react-native'
 import React from 'react'
-import CadastroStyle from './styles/CadastroStyle'
-import { useNavigation } from '@react-navigation/native'
-import logo from '../assets/images/logo.png'
-import InputRB from '../components/InputRB'
-import BotaoRB from '../components/BotaoRB'
-import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB'
+import InputRB from '../components/InputRB';
+import { Image, Text, View } from 'react-native';
+import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB';
+import CadastroOnibusStyle from './styles/CadastroOnibusStyle';
+import BotaoRB from '../components/BotaoRB';
+import passageirosIcone from '../assets/images/passageirosIcone.png';
+import empresaIcone from '../assets/images/empresaIcone.png';
+import { useNavigation } from '@react-navigation/native';
+import EscolherImagemRB from '../components/EscolherImagemRB';
+
 
 export default function CadastroOnibus() {
+
     const navigation = useNavigation();
 
   return (
-    <View style={CadastroStyle.container}>
+    <View style={CadastroOnibusStyle.container}>
         
         <BotaoVoltarOuSairRB acao={() => navigation.goBack()} />
 
-        <View style={MenuStyle.logoContainer}>
-               <Image source={tipoUsuario === 'Passageiro' ? passageirosIcone : empresaIcone} style={MenuStyle.logo} />
-               <Text style={[MenuStyle.tipoUsuarioTexto,{fontFamily: 'Poppins'}]}>{tipoUsuario === 'Passageiro' ? 'Usuário' : 'Empresa'}</Text>
-        </View>
+        <View style={CadastroOnibusStyle.logoContainer}>
+               <Image source={ empresaIcone} style={CadastroOnibusStyle.logo} />
+               <Text style={[CadastroOnibusStyle.tipoUsuarioTexto,{fontFamily: 'Poppins'}]}>{'Cadastro de Ônibus'}</Text>
+            </View>
 
-            <View style={CadastroStyle.inputContainer}>
-                <InputRB
-                    titulo={'Linha do Ônibus'}
-                    textCustomStyle={CadastroStyle.textoInput}
-                    style={CadastroStyle.input}
-                    >
+        <View style={CadastroOnibusStyle.botoesContainer}>    
+        
+                <InputRB 
+                        titulo={'Linha'}
+                        textoCustomEstilo={[CadastroOnibusStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
+                        botaoCustomEstilo={CadastroOnibusStyle.botoes}>
+                </InputRB>
+           
+                <InputRB 
+                        titulo={'Paradas'}
+                        textoCustomEstilo={[CadastroOnibusStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
+                        botaoCustomEstilo={CadastroOnibusStyle.botoes}>
                 </InputRB>
 
-                <Text style={CadastroStyle.ouTexto}> OU </Text>
+                <InputRB 
+                        titulo={'Placa'}
+                        textoCustomEstilo={[CadastroOnibusStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
+                        botaoCustomEstilo={CadastroOnibusStyle.botoes}>
+                </InputRB>
+            </View>
 
-                <InputRB
-                    titulo={'Paradas'}
-                    textCustomStyle={CadastroStyle.textoInput}
-                    style={CadastroStyle.input}
-                    >
-                </InputRB>
-                <InputRB
-                    titulo={'ID da Placa'}
-                    textCustomStyle={CadastroStyle.textoInput}
-                    style={CadastroStyle.input}
-                    >
-                </InputRB>
-                <BotaoRB BotaoRB
-                    titulo={'Foto do Ônibus'}
-                    textoCustomEstilo={[MenuStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
-                     botaoCustomEstilo={MenuStyle.botoes}>
-                </BotaoRB>
-            </View>   
-            <View style={CadastroStyle.containerBotao}>
+            <EscolherImagemRB></EscolherImagemRB>
+
+            <View style={CadastroOnibusStyle.containerBotaoSalvar}>
                 <BotaoRB 
-                        titulo={'Cadastrar Ônibus'}
-                        textoCustomEstilo={CadastroStyle.textoBotao}
-                        botaoCustomEstilo={CadastroStyle.botao}>
+                        titulo={'Salvar alterações'}
+                        acao={}
+                        textoCustomEstilo={[CadastroOnibusStyle.textoBotaoSalvar, {fontFamily: 'PoppinsMedium'}]}
+                        botaoCustomEstilo={CadastroOnibusStyle.botaoSalvar}>
                 </BotaoRB>
             </View>
     </View>
