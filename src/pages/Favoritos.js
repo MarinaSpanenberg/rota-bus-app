@@ -3,42 +3,42 @@ import React, { useState } from 'react'
 import { Image, Text, TouchableOpacity, View } from 'react-native';
 import favoritosIcone from '../assets/images/favoritosIcone.png'
 import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB';
-import FavoritosStyles from './styles/FavoritosStyles';
+import FavoritosStyle from './styles/FavoritosStyle';
 
 export default function Favoritos() {
   const navigation = useNavigation ();
-  const [activeButton, setActiveButton] = useState(null); // Estado para rastrear o botão ativo
+  const [activeButton, setActiveButton] = useState(null); 
 
   const handlePress = (buttonId) => {
-    setActiveButton(buttonId); // Define o botão pressionado como ativo
+    setActiveButton(buttonId); 
   };
 
   return (
-    <View style={FavoritosStyles.containerGeral}>
+    <View style={FavoritosStyle.containerGeral}>
 
-        <View style={FavoritosStyles.containerTopo}>
+        <View style={FavoritosStyle.containerTopo}>
 
             <BotaoVoltarOuSairRB acao={() => navigation.goBack()} />
             
-            <View style={FavoritosStyles.estrelaContainer}>
-                <Image source={favoritosIcone} style={FavoritosStyles.estrelaImagem}/>
+            <View style={FavoritosStyle.estrelaContainer}>
+                <Image source={favoritosIcone} style={FavoritosStyle.estrelaImagem}/>
             </View>
         </View>
-        
-        <View style={FavoritosStyles.containerBase}>
-            <View style={FavoritosStyles.buttonContainer}>
+
+        <View style={FavoritosStyle.containerBase}>
+            <View style={FavoritosStyle.buttonContainer}>
                 <TouchableOpacity
-                    style={[FavoritosStyles.button, activeButton === 1 && FavoritosStyles.buttonPressionado]}
+                    style={[FavoritosStyle.button, activeButton === 1 && FavoritosStyle.buttonPressionado]}
                     onPress={() => handlePress(1)}
                     >
                         <Text 
-                            style={[FavoritosStyles.buttonText, activeButton === 1 && FavoritosStyles.buttonPressionadoTexto ]}>PARADAS</Text>
+                            style={[FavoritosStyle.buttonText, activeButton === 1 && FavoritosStyle.buttonPressionadoTexto ]}>PARADAS</Text>
                 </TouchableOpacity>
                 <TouchableOpacity
-                    style={[FavoritosStyles.button, activeButton === 2 && FavoritosStyles.buttonPressionado ]} 
+                    style={[FavoritosStyle.button, activeButton === 2 && FavoritosStyle.buttonPressionado ]} 
                     onPress={() => handlePress(2)} >
                         <Text 
-                            style={[FavoritosStyles.buttonText, activeButton === 2 && FavoritosStyles.buttonPressionadoTexto ]}>ÔNIBUS</Text>
+                            style={[FavoritosStyle.buttonText, activeButton === 2 && FavoritosStyle.buttonPressionadoTexto ]}>ÔNIBUS</Text>
                 </TouchableOpacity>
           </View>
         </View>
