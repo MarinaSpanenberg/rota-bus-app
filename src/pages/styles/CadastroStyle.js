@@ -23,11 +23,16 @@ export default StyleSheet.create({
         color: cores.branco,
     },
     input: {
-        paddingLeft: 10,
-        width: "90%",
+        width: "100%",
+    },
+    inputNaoSelecionado: {
+        backgroundColor: cores.cinza,
     },
     textoInput: {
         color: cores.branco,
+    },
+    textoInputNaoSelecionado: {
+        color: cores.cinza,
     },
     containerBotao: {
         alignItems: 'center',
@@ -46,4 +51,7 @@ export default StyleSheet.create({
     textoBotao: {
         color: cores.branco,
     },
+    senhaIcon:{
+        color: cores.cinza,
+    }
 });

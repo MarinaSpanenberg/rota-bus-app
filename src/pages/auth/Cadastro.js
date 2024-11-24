@@ -9,7 +9,6 @@ import { Ionicons } from "@expo/vector-icons";
 import { useAuth } from "../../context/AuthContext";
 import { signUpUser } from "../../services/userService";
 
-
 export default function Cadastro() {
   const navigation = useNavigation();
   const [username, setUsername] = useState("");
@@ -84,9 +83,10 @@ export default function Cadastro() {
           editable={!interprisename}
           textCustomStyle={[
             CadastroStyle.textoInput,
-            interprisename ? { color: 'gray' } : {}
+            interprisename ? CadastroStyle.textoInputNaoSelecionado : {}
           ]}
-          style={CadastroStyle.input}
+          inputCustomstyle={interprisename ? CadastroStyle.inputNaoSelecionado : {}}
+          style={[CadastroStyle.input]}
         />
 
         <Text style={CadastroStyle.ouTexto}> OU </Text>
@@ -98,8 +98,9 @@ export default function Cadastro() {
           editable={!username}
           textCustomStyle={[
             CadastroStyle.textoInput,
-            username ? { color: 'gray' } : {}
+            username ? CadastroStyle.textoInputNaoSelecionado : {}
           ]}
+          inputCustomstyle={username ? CadastroStyle.inputNaoSelecionado : {}}
           style={CadastroStyle.input}
         />
         <InputRB
@@ -111,7 +112,6 @@ export default function Cadastro() {
           textCustomStyle={CadastroStyle.textoInput}
           style={CadastroStyle.input}
         />
-        <View>
           <InputRB
             titulo="Senha"
             secureTextEntry={!showPassword}
@@ -119,17 +119,19 @@ export default function Cadastro() {
             onChangeText={setPassword}
             textCustomStyle={CadastroStyle.textoInput}
             style={CadastroStyle.input}
-          />
+            inputCustomstyle={{width: '84%'}}
+          > 
           <TouchableOpacity onPress={togglePasswordVisibility}>
             <Ionicons
               name={showPassword ? "eye-off-outline" : "eye-outline"}
               size={24}
-              color="gray"
+              style={CadastroStyle.senhaIcon}
+              
             />
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
+        </InputRB>
+          
 
-        <View>
           <InputRB
             titulo="Confirmar Senha"
             secureTextEntry={!showPassword}
@@ -137,15 +139,16 @@ export default function Cadastro() {
             onChangeText={setConfirmPassword}
             textCustomStyle={CadastroStyle.textoInput}
             style={CadastroStyle.input}
-          />
-          <TouchableOpacity onPress={toggleConfirmPasswordVisibility}>
+            inputCustomstyle={{width: '84%'}}
+          >
+          <TouchableOpacity onPress={togglePasswordVisibility} >
             <Ionicons
               name={showPassword ? "eye-off-outline" : "eye-outline"}
               size={24}
-              color="gray"
+              style={CadastroStyle.senhaIcon}
             />
-          </TouchableOpacity>
-        </View>
+        </TouchableOpacity>
+        </InputRB>
       </View>
       <View style={CadastroStyle.containerBotao}>
         <BotaoRB
