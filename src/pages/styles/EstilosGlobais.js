@@ -78,8 +78,8 @@ export const EstilosGlobais = StyleSheet.create({
     },
     caixaTexto: {
         paddingLeft: 10,
-        width: "90%",
-        height: 50,
+        flex: 1,
+        height: '100%',
         fontSize: tamanhoFontes.media,
     }
    
