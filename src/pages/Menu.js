@@ -1,6 +1,5 @@
 import React from 'react'
 import { useState } from 'react';
-import InputRB from '../components/InputRB';
 import { Image, Text, View } from 'react-native';
 import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB';
 import MenuStyle from './styles/MenuStyle';
@@ -30,6 +29,7 @@ export default function Menu() {
         
                 <BotaoRB BotaoRB
                         titulo={'Editar perfil'}
+                        acao={() => navigation.navigate('EditarPerfil')}
                         textoCustomEstilo={[MenuStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
                         botaoCustomEstilo={MenuStyle.botoes}>
                 </BotaoRB>
@@ -40,6 +40,7 @@ export default function Menu() {
                     <BotaoRB BotaoRB
                             titulo={'Selecionar Ônibus'}
                             textoCustomEstilo={[MenuStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
+                            acao={() => navigation.navigate('PesquisarRotas')}
                             botaoCustomEstilo={MenuStyle.botoes}>
                     </BotaoRB>
                     <BotaoRB BotaoRB
@@ -50,7 +51,8 @@ export default function Menu() {
                     <BotaoRB BotaoRB
                             titulo={'Favoritos'}
                             textoCustomEstilo={[MenuStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
-                            botaoCustomEstilo={MenuStyle.botoes}>
+                            acao={() => navigation.navigate('Favoritos')}
+                            botaoCustomEstilo={MenuStyle.botoes}>   
                     </BotaoRB>
                 </>
                 ) : (
@@ -58,11 +60,13 @@ export default function Menu() {
                         <BotaoRB BotaoRB
                             titulo={'Cadastrar Ônibus'}
                             textoCustomEstilo={[MenuStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
+                            acao={() => navigation.navigate('CadastroOnibus')}
                             botaoCustomEstilo={MenuStyle.botoes}>
                         </BotaoRB>  
                         <BotaoRB BotaoRB
                                 titulo={'Remover Ônibus'}
                                 textoCustomEstilo={[MenuStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
+                                acao={() => navigation.navigate('RemoverOnibus')}
                                 botaoCustomEstilo={MenuStyle.botoes}>
                         </BotaoRB>
                     </>
