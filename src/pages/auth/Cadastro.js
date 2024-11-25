@@ -66,8 +66,12 @@ export default function Cadastro() {
       Alert.alert("Cadastro não realizado com sucesso");
       return;
     }
-    setUser(response.user);
-    Alert.alert("Cadastro realizado com sucesso.");
+    setUser({
+      username: username || null,
+      interprisename: interprisename || null,
+      email,
+    });   
+     Alert.alert("Cadastro realizado com sucesso.");
     navigation.navigate('Login');
 
   }

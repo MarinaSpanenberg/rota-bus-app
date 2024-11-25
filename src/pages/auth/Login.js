@@ -40,6 +40,7 @@ export default function Login() {
       setUser(response.user);
       Alert.alert("Login realizado com sucesso!");
       navigation.navigate('BuscarRotas');
+      await AsyncStorage.setItem('@userSession', JSON.stringify(authUser));
    
   }
 
