@@ -8,6 +8,7 @@ import BotaoVoltarOuSairRB from '../../components/BotaoVoltarOuSairRB';
 import { Ionicons } from "@expo/vector-icons";
 import { useAuth } from "../../context/AuthContext";
 import { signUpUser } from "../../services/userService";
+import { useTipoUsuario } from '../../context/ContextoDoUsuario';
 
 export default function Cadastro() {
   const navigation = useNavigation();
@@ -18,6 +19,7 @@ export default function Cadastro() {
   const [confirmPassword, setConfirmPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [showConfirmPassword, setShowConfirmPassword] = useState(false);
+  const { setTipoUsuario } = useTipoUsuario();
 
   const { setUser } = useAuth();
 
@@ -63,12 +65,20 @@ export default function Cadastro() {
     const response = await signUpUser({ email, password, username, interprisename });
     console.log(response);
     if (response.success == false) {
-      Alert.alert("Cadastro não realizado com sucesso");
+      Alert.alert("Não foi possível realizar o cadastro.");
       return;
     }
     setUser(response.user);
-    Alert.alert("Cadastro realizado com sucesso.");
-    navigation.navigate('Login');
+    
+    if (username && !interprisename) {
+      setTipoUsuario('Passageiro');
+      Alert.alert("Cadastro realizado com sucesso!", "Redirecionando para login de Passageiro.");
+      navigation.navigate('Login');
+    } else if (interprisename && !username) {
+      setTipoUsuario('Empresa');
+      Alert.alert("Cadastro realizado com sucesso!", "Redirecionando para login de Empresa.");
+      navigation.navigate('Login');
+    }
 
   }
 
