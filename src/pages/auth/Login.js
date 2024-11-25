@@ -20,29 +20,68 @@ export default function Login() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
 
+  const handleLogin = async () => {
+    setLoading(true);
 
-  const dadoLogin = tipoUsuario === 'Empresa' ? 'Email Empresarial' : 'Email Pessoal';
-
-  const { setUser } = useAuth();
-
-  async function signInWithEmail() {
-    if (!email || !password) {
-      Alert.alert("Por favor, preencha os campos de email e senha.");
-      return;
-    }
-    
-      const response = await loginUser(email, password);
-      console.log(response);
-      if (response.success == false) {
-        Alert.alert("Login não realizado com sucesso");
+    try {
+      if (!email || !password) {
+        Alert.alert("Por favor, preencha os campos de email e senha.");
+        setLoading(false);
         return;
       }
-      setUser(response.user);
-      Alert.alert("Login realizado com sucesso!");
+
+      const { data, error } = await supabase
+        .from('user')
+        .select(tipoUsuario === 'Passageiro' ? 'username' : 'interprisename')
+        .eq('email', email)
+        .single();
+
+      if (error || !data) {
+        throw new Error('Erro ao realizar Login, verifique seu email e senha.');
+      }
+
+      if (
+        (tipoUsuario === 'Passageiro' && !data.username) || 
+        (tipoUsuario === 'Empresa' && !data.interprisename)
+      ) {
+        throw new Error(
+          tipoUsuario === 'Passageiro' ? 'Esta conta não pertence a um Passageiro.' : 'Esta conta não pertence a uma Empresa.');
+      }
+
+      Alert.alert('Login bem-sucedido!', 'Bem-vindo ao RotaBusApp!');
       navigation.navigate('BuscarRotas');
       await AsyncStorage.setItem('@userSession', JSON.stringify(authUser));
+
+    } catch (error) {
+      Alert.alert('Erro de Login', error.message);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  const dadoLogin = tipoUsuario === 'Passageiro' ? 'Email Pessoal' : 'Email Empresarial';
+
+  // Codigo antigo, não remover antes de testar a nova implementação de ponta a ponta
+  
+  // const { setUser } = useAuth();
+
+  // async function signInWithEmail() {
+  //   if (!email || !password) {
+  //     Alert.alert("Por favor, preencha os campos de email e senha.");
+  //     return;
+  //   }
+    
+  //     const response = await loginUser(email, password);
+  //     console.log(response);
+  //     if (response.success == false) {
+  //       Alert.alert("Login não realizado com sucesso");
+  //       return;
+  //     }
+  //     setUser(response.user);
+  //     Alert.alert("Login realizado com sucesso!");
+  //     navigation.navigate('BuscarRotas');
    
-  }
+  // }
 
   return (
     <View style={LoginStyle.container}>
@@ -52,8 +91,8 @@ export default function Login() {
             <Image source={logo} style={LoginStyle.logo}></Image>
         </View>
         <View style={LoginStyle.descriptionContainer}>
-            <Text style={LoginStyle.descriptionText}>Entre como 
-                <Text style={LoginStyle.descriptionBoldText}> {tipoUsuario}</Text>
+            <Text style={LoginStyle.descriptionText}>
+              {tipoUsuario === 'Passageiro' ? 'Login Passageiro' : 'Login Empresa'}
             </Text>
         </View>
       <View style={LoginStyle.inputContainer}>
@@ -76,8 +115,8 @@ export default function Login() {
           <ActivityIndicator size="large" color="#0000ff" />
         ) : (
           <BotaoRB
-            titulo="Entrar"
-            acao={signInWithEmail}
+            titulo={loading ? 'Carregando...' : 'Entrar'}
+            acao={handleLogin}
             textoCustomEstilo={LoginStyle.textoBotao}
             botaoCustomEstilo={LoginStyle.botao}
           />

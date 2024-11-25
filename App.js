@@ -1,10 +1,10 @@
-import TelaInicial from './src/pages/TelaInicial';
-import Login from './src/pages/auth/Login';
 import React, { useState, useEffect } from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import { NavigationContainer, useNavigation } from '@react-navigation/native';
-import RedefinirSenha from './src/pages/RedefinirSenha';
+import TelaInicial from './src/pages/TelaInicial';
+import Login from './src/pages/auth/Login';
 import Cadastro from './src/pages/auth/Cadastro';
+import RedefinirSenha from './src/pages/RedefinirSenha';
 import BuscarRotas from './src/pages/BuscarRotas';
 import Menu from './src/pages/Menu';
 import FontLoader from './src/components/FontLoader';
