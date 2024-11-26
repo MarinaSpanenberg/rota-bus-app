@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import { View, StyleSheet, Alert, Text } from 'react-native';
-import MapView, { Marker, Callout } from 'react-native-maps';
+import MapView, { Marker } from 'react-native-maps';
 import * as Location from 'expo-location';
 import paradaIcon from '../assets/images/paradaIcon.png';
 import localizacaoUsuarioIcon from '../assets/images/localizacaoUsuarioIcon.png';
@@ -52,7 +52,6 @@ const Map = () => {
   return (
     <View style={styles.container}>
       <MapView
-        provider="google"
         style={styles.map}
         region={initialRegion}
         showsUserLocation={true}
@@ -76,9 +75,11 @@ const Map = () => {
               latitude: item.latitude,
               longitude: item.longitude,
             }}
+            
             image={paradaIcon}
-            onPress={() => navigation.navigate('DetalhesParada', { name: item.name })}
+            onPress={() => navigation.navigate('DetalhesParada', { name: item.name, id: item.id })}
           />
+          
         ))}
         
       </MapView>
