@@ -22,9 +22,8 @@ export default StyleSheet.create({
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
-        height: '100%',
-        top: 350,
-        bottom: 500,
+        paddingBottom: 400,
+        top: 400,
         backgroundColor: cores.azul,
     },
     pesquisaTexto: {
