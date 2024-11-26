@@ -28,17 +28,18 @@ export default StyleSheet.create({
         height: '40%',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 25,
     },
     botoes: {
         width: '70%',
         alignItems: 'center',    
         backgroundColor: cores.branco,
-        marginBottom: 15,
     },
     textoBotoes: {
-        color: cores.preto,
+        color: cores.branco,
         flexDirection: 'row',
+    },
+    textoBotao: {
+        color: cores.preto,
     },
     containerBotaoSalvar: {
         width: '100%',
@@ -54,5 +55,35 @@ export default StyleSheet.create({
     },
     textoBotaoSalvar: {
         color: cores.branco,
+    },
+    modalOverlay: {
+        flex: 1,
+        justifyContent: 'center',
+        alignItems: 'center',
+        backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    },
+    modalContainer: {
+        backgroundColor: 'white',
+        width: '80%',
+        padding: 20,
+        borderRadius: 10,
+    },
+    searchInput: {
+        borderWidth: 1,
+        borderColor: '#ccc',
+        padding: 10,
+        marginBottom: 15,
+        borderRadius: 5,
+    },
+    closeButton: {
+        marginTop: 15,
+        alignItems: 'center',
+        backgroundColor: '#007bff',
+        paddingVertical: 10,
+        borderRadius: 5,
+    },
+    closeButtonText: {
+        color: 'white',
+        fontSize: 16,
     },
 });
