@@ -16,7 +16,6 @@ export default StyleSheet.create({
     },
     logo : {
         height: '30%',
-        marginBottom: 5,
         resizeMode: 'contain',
     },
     tipoUsuarioTexto: {
@@ -24,21 +23,18 @@ export default StyleSheet.create({
         fontSize: tamanhoFontes.pequena,
     },
     botoesContainer: {
-        width: '100%',
-        height: '40%',
         alignItems: 'center',
         justifyContent: 'center',
-        marginBottom: 25,
+        flexDirection: 'column',
+        color: cores.branco,
     },
     botoes: {
-        width: '70%',
         alignItems: 'center',    
         backgroundColor: cores.branco,
         marginBottom: 15,
     },
     textoBotoes: {
-        color: cores.preto,
-        flexDirection: 'row',
+        color: cores.branco,
     },
     containerBotaoSalvar: {
         width: '100%',
