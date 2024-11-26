@@ -1,17 +1,41 @@
-import { createContext, useContext, useState } from "react";
+import React, { createContext, useContext, useEffect, useState } from "react";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { supabase } from "../services/supabase";
 
-const AuthContext = createContext();
+// Criar o contexto de autenticação
+export const AuthContext = createContext();
 
-export function AuthProvider({ children }) {
-  const [user, setUser] = useState();
+// Fornecer o AuthContext para os componentes
+export const AuthProvider = ({ children }) => {
+  const [user, setUser] = useState(null);
+
+  useEffect(() => {
+    const checkSession = async () => {
+      const { data } = await supabase.auth.getSession();
+      if (data?.session) {
+        setUser(data.session.user);
+      } else {
+        const storedSession = await AsyncStorage.getItem('@userSession');
+        if (storedSession) {
+          setUser(JSON.parse(storedSession));
+        }
+      }
+    };
+
+    checkSession();
+  }, []);
 
   return (
     <AuthContext.Provider value={{ user, setUser }}>
       {children}
     </AuthContext.Provider>
   );
-}
+};
 
 export const useAuth = () => {
-  return useContext(AuthContext);
+  const context = useContext(AuthContext);
+  if (!context) {
+    throw new Error("useAuth deve ser usado dentro de um AuthProvider");
+  }
+  return context;
 };
