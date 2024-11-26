@@ -112,11 +112,12 @@ export default function Login() {
           titulo={dadoLogin}
           value={email}
           onChangeText={setEmail}
+          keyboardType="email-address"
           style={LoginStyle.input}
         />
         <InputRB
           titulo="Senha"
-          secureTextEntry={showPassword}
+          secureTextEntry={!showPassword}
           value={password}
           onChangeText={setPassword}
           style={LoginStyle.input}
@@ -124,7 +125,7 @@ export default function Login() {
           > 
           <TouchableOpacity onPress={togglePasswordVisibility}>
             <Ionicons
-              name={showPassword ? "eye-off-outline" : "eye-outline"}
+              name={!showPassword ? "eye-off-outline" : "eye-outline"}
               size={24}
               style={LoginStyle.senhaIcon}
               

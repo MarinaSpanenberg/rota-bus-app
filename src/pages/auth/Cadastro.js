@@ -131,7 +131,7 @@ export default function Cadastro() {
         />
           <InputRB
             titulo="Senha"
-            secureTextEntry={showPassword}
+            secureTextEntry={!showPassword}
             value={password}
             onChangeText={setPassword}
             textCustomStyle={CadastroStyle.textoInput}
@@ -140,7 +140,7 @@ export default function Cadastro() {
           > 
           <TouchableOpacity onPress={togglePasswordVisibility}>
             <Ionicons
-              name={showPassword ? "eye-off-outline" : "eye-outline"}
+              name={!showPassword ? "eye-off-outline" : "eye-outline"}
               size={24}
               style={CadastroStyle.senhaIcon}
               
@@ -151,7 +151,7 @@ export default function Cadastro() {
 
           <InputRB
             titulo="Confirmar Senha"
-            secureTextEntry={showPassword}
+            secureTextEntry={!showPassword}
             value={confirmPassword}
             onChangeText={setConfirmPassword}
             textCustomStyle={CadastroStyle.textoInput}
@@ -160,7 +160,7 @@ export default function Cadastro() {
           >
           <TouchableOpacity onPress={togglePasswordVisibility} >
             <Ionicons
-              name={showPassword ? "eye-off-outline" : "eye-outline"}
+              name={!showPassword ? "eye-off-outline" : "eye-outline"}
               size={24}
               style={CadastroStyle.senhaIcon}
             />

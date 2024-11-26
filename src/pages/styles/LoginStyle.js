@@ -47,7 +47,7 @@ export default StyleSheet.create({
     },
     input: {
         paddingLeft: 10,
-        width: "90%",
+        width: "100%",
     },
     recuperarSenhaContainer: {
         paddingHorizontal: 10,
