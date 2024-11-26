@@ -56,5 +56,5 @@ export default StyleSheet.create({
       },
       buttonPressionadoTexto: {
         color: cores.laranja,
-      }
+      },
 });

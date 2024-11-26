@@ -28,4 +28,11 @@ export default StyleSheet.create({
         color: cores.laranja,
         fontSize: tamanhoFontes.intermediaria,
     },
+    favoritoContainer: {
+        width: '100%',
+    },
+    favorito: {
+        height: 20,
+        resizeMode: 'contain'   
+    }
 });

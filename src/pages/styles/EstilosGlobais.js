@@ -81,6 +81,18 @@ export const EstilosGlobais = StyleSheet.create({
         flex: 1,
         height: '100%',
         fontSize: tamanhoFontes.media,
-    }
+    },
+    favoritoItem: {
+        width: '100%',
+        alignItems: 'flex-start',
+        padding: 10,
+        borderBottomWidth: 1,
+        borderStyle: 'dotted',
+        borderColor: cores.cinza
+      },
+      favoritoText: {
+        color: cores.azul,
+        fontFamily: 'PoppinsMedium'
+      }
    
 });

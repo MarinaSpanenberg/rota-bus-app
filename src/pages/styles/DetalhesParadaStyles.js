@@ -67,4 +67,8 @@ export default StyleSheet.create({
         marginBottom: 10,
         resizeMode: 'contain'
     },
+    busListContainer: {
+        top: 80,
+        width: '100%'
+    }
 });
