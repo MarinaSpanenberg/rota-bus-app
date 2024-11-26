@@ -117,7 +117,7 @@ export default function Cadastro() {
             CadastroStyle.textoInput,
             username ? CadastroStyle.textoInputNaoSelecionado : {}
           ]}
-          inputCustomstyle={username ? CadastroStyle.inputNaoSelecionado : {}}
+          inputCustomStyle={username ? CadastroStyle.inputNaoSelecionado : {}}
           style={CadastroStyle.input}
         />
         <InputRB
@@ -136,7 +136,7 @@ export default function Cadastro() {
             onChangeText={setPassword}
             textCustomStyle={CadastroStyle.textoInput}
             style={CadastroStyle.input}
-            inputCustomstyle={{width: '84%'}}
+            inputCustomStyle={{width: '84%'}}
           > 
           <TouchableOpacity onPress={togglePasswordVisibility}>
             <Ionicons
@@ -156,7 +156,7 @@ export default function Cadastro() {
             onChangeText={setConfirmPassword}
             textCustomStyle={CadastroStyle.textoInput}
             style={CadastroStyle.input}
-            inputCustomstyle={{width: '84%'}}
+            inputCustomStyle={{width: '84%'}}
           >
           <TouchableOpacity onPress={togglePasswordVisibility} >
             <Ionicons
