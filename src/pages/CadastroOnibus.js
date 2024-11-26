@@ -168,7 +168,7 @@ export default function CadastroOnibus() {
 
         <View style={CadastroOnibusStyle.botoesContainer}>    
 
-                <EscolherImagemRB setImageUrl={setImageUrl} />
+                {/* <EscolherImagemRB setImageUrl={setImageUrl} /> */}
 
                 <InputRB 
                         titulo={'Linha'}
