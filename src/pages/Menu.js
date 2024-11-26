@@ -43,11 +43,7 @@ export default function Menu() {
                             acao={() => navigation.navigate('PesquisarRotas')}
                             botaoCustomEstilo={MenuStyle.botoes}>
                     </BotaoRB>
-                    <BotaoRB BotaoRB
-                            titulo={'Selecionar Paradas'}
-                            textoCustomEstilo={[MenuStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
-                            botaoCustomEstilo={MenuStyle.botoes}>
-                    </BotaoRB>
+                    
                     <BotaoRB BotaoRB
                             titulo={'Favoritos'}
                             textoCustomEstilo={[MenuStyle.textoBotoes, {fontFamily: 'PoppinsMedium'}]}
