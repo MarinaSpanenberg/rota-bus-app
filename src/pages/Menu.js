@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { Image, Text, View } from 'react-native';
+import { Alert, Image, Text, View } from 'react-native';
 import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB';
 import MenuStyle from './styles/MenuStyle';
 import BotaoRB from '../components/BotaoRB';
@@ -21,6 +21,46 @@ export default function Menu() {
     await signOutUser();
     setUser(null);
     navigation.navigate('TelaInicial');
+  };
+
+  const handleDeleteAccount = async () => {
+    Alert.alert(
+      "Confirmação de Exclusão", // Título do alerta
+      "Tem certeza de que deseja deletar sua conta? Esta ação não pode ser desfeita.",
+      [
+        {
+          text: "Cancelar",
+          onPress: () => console.log("Exclusão cancelada"),
+          style: "cancel",
+        },
+        {
+          text: "Deletar",
+          onPress: async () => {
+            try {
+              const { error } = await supabase
+                .from("user")
+                .delete()
+                .eq("id", user.id);
+  
+              if (error) {
+                console.error("Erro ao deletar conta:", error.message);
+                Alert.alert("Erro", "Não foi possível deletar a conta. Tente novamente.");
+                return;
+              }
+
+              await signOutUser();
+              setUser(null);
+              Alert.alert("Sucesso", "Conta deletada com sucesso!");
+              navigation.navigate("TelaInicial");
+            } catch (err) {
+              console.error("Erro ao deletar conta:", err.message);
+              Alert.alert("Erro", "Ocorreu um erro inesperado. Tente novamente.");
+            }
+          },
+          style: "destructive",
+        },
+      ]
+    );
   };
 
   return (
@@ -77,6 +117,7 @@ export default function Menu() {
 
         <BotaoRB BotaoRB
           titulo={'Deletar Conta'}
+          acao={handleDeleteAccount}
           textoCustomEstilo={[MenuStyle.textoBotoes, { fontFamily: 'PoppinsMedium' }]}
           botaoCustomEstilo={MenuStyle.botoes}>
         </BotaoRB>
