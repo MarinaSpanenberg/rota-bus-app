@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Alert, ActivityIndicator, Image } from 'react-native';
+import { View, Text, Alert, ActivityIndicator, Image, TouchableOpacity } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import { supabase } from '../../services/supabase';
 import LoginStyle from '../styles/LoginStyle';
@@ -10,6 +10,8 @@ import { useTipoUsuario } from '../../context/ContextoDoUsuario';
 import logo from '../../assets/images/logo.png';
 import { useAuth } from "../../context/AuthContext";
 import { loginUser } from "../../services/userService";
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { Ionicons } from "@expo/vector-icons";
 
 
 export default function Login() {
@@ -32,7 +34,11 @@ export default function Login() {
 
       const { data, error } = await supabase
         .from('user')
-        .select(tipoUsuario === 'Passageiro' ? 'username' : 'interprisename')
+        .select(
+          tipoUsuario === 'Passageiro' 
+            ? 'id, username' 
+            : 'id, interprisename'
+        )
         .eq('email', email)
         .single();
 
@@ -48,9 +54,12 @@ export default function Login() {
           tipoUsuario === 'Passageiro' ? 'Esta conta não pertence a um Passageiro.' : 'Esta conta não pertence a uma Empresa.');
       }
 
+      await AsyncStorage.setItem('@userSession', JSON.stringify(data));
+      console.log(data);
+      
       Alert.alert('Login bem-sucedido!', 'Bem-vindo ao RotaBusApp!');
       navigation.navigate('BuscarRotas');
-      await AsyncStorage.setItem('@userSession', JSON.stringify(authUser));
+      
 
     } catch (error) {
       Alert.alert('Erro de Login', error.message);
@@ -61,6 +70,9 @@ export default function Login() {
 
   const dadoLogin = tipoUsuario === 'Passageiro' ? 'Email Pessoal' : 'Email Empresarial';
 
+  const togglePasswordVisibility = () => {
+    setShowPassword(!showPassword);
+  };
   // Codigo antigo, não remover antes de testar a nova implementação de ponta a ponta
   
   // const { setUser } = useAuth();
@@ -104,11 +116,21 @@ export default function Login() {
         />
         <InputRB
           titulo="Senha"
+          secureTextEntry={showPassword}
           value={password}
           onChangeText={setPassword}
-          secureTextEntry
           style={LoginStyle.input}
-        />
+          inputCustomStyle={{width: '84%'}}
+          > 
+          <TouchableOpacity onPress={togglePasswordVisibility}>
+            <Ionicons
+              name={showPassword ? "eye-off-outline" : "eye-outline"}
+              size={24}
+              style={LoginStyle.senhaIcon}
+              
+            />
+        </TouchableOpacity>
+        </InputRB>
       </View>
       <View style={LoginStyle.containerBotao}>
         {loading ? (

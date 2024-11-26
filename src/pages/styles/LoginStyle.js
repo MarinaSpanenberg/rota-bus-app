@@ -80,4 +80,7 @@ export default StyleSheet.create({
     textoBotao: {
         color: cores.branco,
     },
+    senhaIcon:{
+        color: cores.cinza,
+    }
 });
