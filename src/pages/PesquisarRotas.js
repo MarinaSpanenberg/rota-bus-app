@@ -3,9 +3,7 @@ import { Alert, FlatList, Image, Text, TouchableOpacity, View } from 'react-nati
 import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB'
 import PesquisarRotasStyles from './styles/PesquisarRotasStyles'
 import { useNavigation } from '@react-navigation/native';
-import BarraDePesquisaRB from '../components/BarraDePesquisaRB';
 import { fetchBusData } from '../services/busService';
-import DetalhesParadaStyles from './styles/DetalhesParadaStyles';
 import favoritoNaoSelecionado from '../assets/images/favoritoNaoSelecionado.png';
 import favoritoSelecionado from '../assets/images/favoritoSelecionado.png';
 import { toggleFavorito } from '../services/favoritosService';
@@ -16,7 +14,8 @@ export default function PesquisarRotas() {
     const [busData, setBusData] = useState([]);
     const navigation = useNavigation();
     const [favoritos, setFavoritos] = useState(false);
-    const [userId, setUserId] = useState(null);
+    const [searchQuery, setSearchQuery] = useState('');
+    const [filteredBusData, setFilteredBusData] = useState([]);
 
     const loadBusData = async () => {
       
@@ -29,9 +28,13 @@ export default function PesquisarRotas() {
   };
 
   useEffect(() => {
-      loadBusData(); 
-      loadFavoritos(); 
-    }, []);
+    loadBusData(); 
+    loadFavoritos();
+}, []);
+
+useEffect(() => {
+    setFilteredBusData(busData); 
+}, [busData])
 
     const loadFavoritos = async () => {
         try {
@@ -85,7 +88,19 @@ export default function PesquisarRotas() {
         <Text style={EstilosGlobais.favoritoText}> {item.user?.interprisename}</Text>
         
     </View>
+
 );
+
+const filterBusData = (query) => {
+    const normalizedQuery = query.toLowerCase();
+    const filteredData = busData.filter((item) => 
+        item.name.toLowerCase().includes(normalizedQuery) || 
+        item.line.toString().includes(normalizedQuery)
+    );
+    setFilteredBusData(filteredData);
+    
+};
+
   return (
     <View style={PesquisarRotasStyles.containerGeral}>
 
@@ -97,13 +112,24 @@ export default function PesquisarRotas() {
                 <Text style={[{fontFamily: 'PoppinsExtraBold'}, PesquisarRotasStyles.logoTexto]}>RotaBus</Text>
             </View>
 
-            <BarraDePesquisaRB placeholder={' Pesquise sua rota...'}/>
+            {/* <BarraDePesquisaRB 
+                placeholder={' Pesquise sua rota...'}
+                value={searchQuery}
+                onChangeText={(query) => {
+                    console.log('Texto digitado:', query); // Verifique o texto digitado
+        setSearchQuery(query); 
+        filterBusData(query); 
+                }}
+                /> */}
+                <View style={PesquisarRotasStyles.tituloContainer}>
+                    <Text style={PesquisarRotasStyles.tituloTexto}>Ônibus Disponíveis</Text>
+                </View>
 
         </View>
         <View style={PesquisarRotasStyles.containerBase}>
             
           <FlatList
-                      data={busData} 
+                      data={filteredBusData.length > 0 ? filteredBusData : busData} 
                       renderItem={renderItem} 
                       keyExtractor={item => item.bus_id.toString()} 
                       style={{ marginTop: 20 }}

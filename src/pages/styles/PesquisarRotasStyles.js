@@ -34,5 +34,16 @@ export default StyleSheet.create({
     favorito: {
         height: 20,
         resizeMode: 'contain'   
-    }
+    },
+    tituloContainer: {
+        width: '100%',
+        alignItems: 'center',
+        justifyContent: 'center',
+        top: 130
+    },
+    tituloTexto: {
+        color: cores.branco,
+        fontSize: tamanhoFontes.media,
+        fontFamily: 'PoppinsExtraBold'
+    },
 });
