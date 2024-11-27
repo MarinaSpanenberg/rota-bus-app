@@ -175,7 +175,7 @@ export default function Cadastro() {
           botaoCustomEstilo={CadastroStyle.botao}
         />
       </View>
-      <Text style={CadastroStyle.textoInput}>Já tem uma conta? <Text onPress={() => navigation.navigate('Login')} style={CadastroStyle.textoInput}>Faça login</Text></Text>
+      <Text style={CadastroStyle.textoInput}>Já tem uma conta? <Text onPress={() => navigation.navigate('TelaInicial')} style={CadastroStyle.textoInput}>Faça login</Text></Text>
     </View>
   );
 }
