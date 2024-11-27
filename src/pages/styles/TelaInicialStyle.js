@@ -10,6 +10,7 @@ export default StyleSheet.create({
         width: '100%',
         height: 'auto',
         alignItems: 'center',
+        marginTop: 100,
         justifyContent: 'center',
         overflow: 'hidden'
     },

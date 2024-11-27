@@ -11,10 +11,37 @@ export const cores = {
 export const tamanhoFontes = {
     pequena: 14,
     media: 16,
+    intermediaria: 27,
     grande: 40,
 };
 
 export const EstilosGlobais = StyleSheet.create({
+    botaoPesquisar: {
+        alignItems: "center",
+        justifyContent: "center",
+        width: '90%',
+        height: 64,
+        borderRadius: 50,
+        backgroundColor: cores.azul,
+        elevation: 7,
+        paddingHorizontal: 20,
+        position: 'absolute',
+        bottom: 32
+    },
+    textoBotaoPesquisar: {
+        color: cores.branco,
+        fontSize: tamanhoFontes.media,
+    },
+    botaoVoltar: {
+        position: 'absolute',
+        top: 50,
+        padding: 10,
+        left: 10,
+    },
+    botaoVoltarImagem: {
+        width: 50,
+        height: 50,
+    },
     botao: {
         alignItems: "center",
         justifyContent: "center",
@@ -47,12 +74,24 @@ export const EstilosGlobais = StyleSheet.create({
         borderWidth: 1,
         borderRadius: 6,
         marginBottom: 24,
+        backgroundColor: cores.branco,
     },
     caixaTexto: {
         paddingLeft: 10,
-        width: "90%",
-        height: 50,
+        flex: 1,
+        height: '100%',
         fontSize: tamanhoFontes.media,
-    }
-   
+    },
+    favoritoItem: {
+        width: '100%',
+        alignItems: 'flex-start',
+        padding: 10,
+        borderBottomWidth: 1,
+        borderStyle: 'dotted',
+        borderColor: cores.cinza
+      },
+      favoritoText: {
+        color: cores.azul,
+        fontFamily: 'PoppinsMedium'
+      }
 });

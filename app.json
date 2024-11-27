@@ -4,33 +4,46 @@
     "slug": "RotaBus",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./src/assets/images/icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./src/assets/images/splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#130E51"
     },
     "ios": {
       "supportsTablet": true
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#ffffff"
-      }
+        "foregroundImage": "./src/assets/images/icon.png",
+        "backgroundColor": "#130E51"
+      },
+      "package": "com.rotabus.rotabus",
+      "versionCode": 1
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./src/assets/images/icon.png"
     },
     "plugins": [
       [
         "expo-font",
-      {
-        "fonts": 
-        ["./src/assets/fonts/Aurebesh-English.ttf"]
+        {
+          "fonts": [
+            "./src/assets/fonts/PoppinsRegular.ttf",
+            "./src/assets/fonts/Poppins-Medium.ttf",
+            "./src/assets/fonts/Poppins-SemiBold.ttf",
+            "./src/assets/fonts/Poppins-Bold.ttf",
+            "./src/assets/fonts/Poppins-ExtraBold.ttf"
+          ]
+        }
+      ]
+    ],
+    "owner": "rotabusapp",
+    "extra": {
+      "eas": {
+        "projectId": "6978c195-acb3-4180-b66a-2aee8afafb40"
       }
-    ]
-  ] 
+    }
   }
 }

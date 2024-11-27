@@ -6,12 +6,15 @@ export default StyleSheet.create({
         flex: 1,
         justifyContent: 'center',
         alignItems: 'center',
+        padding: 0,
+        margin: 0,
     },
     logoContainer: {
         width: '100%',
         height: 'auto',
         alignItems: 'center',
         justifyContent: 'center',
+        marginTop: 100,
         overflow: 'hidden'
     },
     logo : {
@@ -44,7 +47,7 @@ export default StyleSheet.create({
     },
     input: {
         paddingLeft: 10,
-        width: "90%",
+        width: "100%",
     },
     recuperarSenhaContainer: {
         paddingHorizontal: 10,
@@ -77,4 +80,7 @@ export default StyleSheet.create({
     textoBotao: {
         color: cores.branco,
     },
+    senhaIcon:{
+        color: cores.cinza,
+    }
 });
