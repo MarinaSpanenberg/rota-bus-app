@@ -1,5 +1,4 @@
 import React from 'react'
-import { useState } from 'react';
 import { Alert, Image, Text, View } from 'react-native';
 import BotaoVoltarOuSairRB from '../components/BotaoVoltarOuSairRB';
 import MenuStyle from './styles/MenuStyle';
@@ -19,13 +18,13 @@ export default function Menu() {
 
   const handleLogout = async () => {
     await signOutUser();
-    setUser(null);
+    //setUser(null);
     navigation.navigate('TelaInicial');
   };
 
   const handleDeleteAccount = async () => {
     Alert.alert(
-      "Confirmação de Exclusão", // Título do alerta
+      "Confirmação de Exclusão", 
       "Tem certeza de que deseja deletar sua conta? Esta ação não pode ser desfeita.",
       [
         {
@@ -70,7 +69,7 @@ export default function Menu() {
 
       <View style={MenuStyle.logoContainer}>
         <Image source={tipoUsuario === 'Passageiro' ? passageirosIcone : empresaIcone} style={MenuStyle.logo} />
-        <Text style={[MenuStyle.tipoUsuarioTexto, { fontFamily: 'Poppins' }]}>{tipoUsuario === 'Passageiro' ? 'Usuário' : 'Empresa'}</Text>
+        <Text style={[MenuStyle.tipoUsuarioTexto, { fontFamily: 'Poppins' }]}>{tipoUsuario === 'Passageiro' ? user.username : user.interprisename}</Text>
       </View>
 
       <View style={MenuStyle.botoesContainer}>

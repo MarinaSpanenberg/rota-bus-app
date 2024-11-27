@@ -94,5 +94,4 @@ export const EstilosGlobais = StyleSheet.create({
         color: cores.azul,
         fontFamily: 'PoppinsMedium'
       }
-   
 });

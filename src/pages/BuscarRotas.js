@@ -1,13 +1,11 @@
-import { View, Text, StyleSheet, TextInput, TouchableOpacity, KeyboardAvoidingView, Alert } from 'react-native'
-import React, { useState } from 'react'
+import { View, Text, TextInput, Alert } from 'react-native'
+import React, { useRef, useState } from 'react'
 import { useNavigation } from '@react-navigation/native'
 import BotaoMenuRB from '../components/BotaoMenuRB'
 import BotaoPesquisarRB from '../components/BotaoPesquisarRB'
 import BuscarRotasStyle from './styles/BuscarRotasStyle'
 import { useTipoUsuario } from '../context/ContextoDoUsuario';
 import Map from '../components/Mapa';
-import BarraDePesquisa from '../components/BarraDePesquisaRB'
-import BarraDePesquisaRB from '../components/BarraDePesquisaRB'
 import { supabase } from '../services/supabase'
 
 export default function BuscarRotas() {
@@ -21,6 +19,7 @@ export default function BuscarRotas() {
         'Digite a placa do Ônibus\nque deseja buscar';
         return dado;
       }
+
 
     const botaoParaPesquisa = () => setAbrirSearch(!abrirSearch);
     
@@ -69,10 +68,12 @@ export default function BuscarRotas() {
           </View> 
           {abrirSearch ? (
                 <View style={BuscarRotasStyle.pesquisaContainer}>
-                    <TextInput style={BuscarRotasStyle.pesquisaTexto}
+                    <TextInput 
+                        keyboardType='default'
                         onChangeText={mudarPesquisaPlacas}
                         value={pesquisaPlacas}
                         onSubmitEditing={buscarLinhaOnibus}
+                        editable={true}
                     />
                 </View>
             ) : (

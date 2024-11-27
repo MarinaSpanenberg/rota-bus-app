@@ -19,12 +19,14 @@ export default StyleSheet.create({
         fontSize: tamanhoFontes.intermediaria,
     },
     pesquisaContainer: {
+        position: 'absolute',
         flexDirection: 'row',
         alignItems: 'center',
         width: '100%',
         paddingBottom: 400,
         top: 400,
         backgroundColor: cores.azul,
+        
     },
     pesquisaTexto: {
         color: cores.branco,

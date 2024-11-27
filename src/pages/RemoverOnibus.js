@@ -80,7 +80,7 @@ export default function RemoverOnibus() {
   const renderBusItem = ({ item }) => (
     <View style={RemoverOnibusStyle.favoritoItem}>
       <Text style={EstilosGlobais.favoritoText}>
-        {item.line} | {item.name}
+        {item.line} {"\n"}Placa: {item.name}
       </Text>
       <TouchableOpacity
         style={RemoverOnibusStyle.deletarBotaoContainer}

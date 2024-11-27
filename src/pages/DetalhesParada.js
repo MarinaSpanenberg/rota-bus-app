@@ -84,7 +84,7 @@ export default function DetalhesParada({ route }) {
 
     const renderBusItem = ({ item }) => (
         <View style={EstilosGlobais.favoritoItem}>
-            <Text style={EstilosGlobais.favoritoText}> {item.line} | {item.name}</Text>
+            <Text style={EstilosGlobais.favoritoText}> {item.line} </Text>
             {item.user && (
             <Text style={EstilosGlobais.favoritoText}> {item.user.interprisename}</Text>
         )}

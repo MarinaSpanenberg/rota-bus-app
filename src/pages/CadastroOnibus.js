@@ -6,7 +6,6 @@ import CadastroOnibusStyle from './styles/CadastroOnibusStyle';
 import BotaoRB from '../components/BotaoRB';
 import empresaIcone from '../assets/images/empresaIcone.png';
 import { useNavigation } from '@react-navigation/native';
-import EscolherImagemRB from '../components/EscolherImagemRB';
 import AsyncStorage from '@react-native-async-storage/async-storage';
 import { supabase } from '../services/supabase';
 import { CheckBox } from '@rneui/themed/dist/CheckBox';

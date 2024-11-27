@@ -55,25 +55,6 @@ export default function EditarPerfil() {
             fetchUserData();
     }, []);
 
-    const escolherImagemPerfil = async () => {
-        const { status } = await ImagePicker.requestMediaLibraryPermissionsAsync();
-
-        if (status !== 'granted') {
-            alert('Desculpe, precisamos de permissão para acessar suas imagens!');
-            return; 
-        }
-
-        let result = await ImagePicker.launchImageLibraryAsync({
-            mediaTypes: ImagePicker.MediaTypeOptions.Images,
-            allowsEditing: false,
-            quality: 0.5,
-        });
-
-        if (!result.canceled) {
-            setImage(result.assets[0].uri);
-        }
-    };
-
     const salvarAlteracoes = async () => {
         if (!userId) {
             console.error('ID do usuário não definido.');
@@ -116,7 +97,7 @@ export default function EditarPerfil() {
             
             <BotaoVoltarOuSairRB acao={() => navigation.goBack()} />
 
-            <TouchableOpacity onPress={escolherImagemPerfil} style={EditarPerfilStyle.logoContainer}>
+            {/* <TouchableOpacity onPress={escolherImagemPerfil} style={EditarPerfilStyle.logoContainer}> */}
                 <Image
                     source={
                         image
@@ -127,7 +108,7 @@ export default function EditarPerfil() {
                     }
                     style={EditarPerfilStyle.logo} 
                 />
-            </TouchableOpacity>
+            {/* </TouchableOpacity> */}
 
             <View style={EditarPerfilStyle.botoesContainer}>
                 <InputRB
