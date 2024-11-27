@@ -102,7 +102,7 @@ export default function Cadastro() {
             CadastroStyle.textoInput,
             interprisename ? CadastroStyle.textoInputNaoSelecionado : {}
           ]}
-          inputCustomstyle={interprisename ? CadastroStyle.inputNaoSelecionado : {}}
+          inputCustomStyle={interprisename ? CadastroStyle.inputNaoSelecionado : {}}
           style={[CadastroStyle.input]}
         />
 
