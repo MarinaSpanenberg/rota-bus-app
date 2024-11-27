@@ -109,7 +109,7 @@ export default function Cadastro() {
         <Text style={CadastroStyle.ouTexto}> OU </Text>
 
         <InputRB
-          titulo="Nome da Empresa"
+          titulo="Usuário para Empresa"
           value={interprisename}
           onChangeText={(text) => handleMutualInputForUser('interprisename', text)}
           editable={!username}
