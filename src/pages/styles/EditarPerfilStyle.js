@@ -15,8 +15,9 @@ export default StyleSheet.create({
         justifyContent: 'center',
     },
     logo : {
-        height: '30%',
+        height: '20%',
         resizeMode: 'contain',
+        marginBottom: 55,
     },
     tipoUsuarioTexto: {
         color: cores.branco,
