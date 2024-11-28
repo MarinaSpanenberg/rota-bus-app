@@ -21,16 +21,15 @@ export default StyleSheet.create({
     pesquisaContainer: {
         position: 'absolute',
         flexDirection: 'row',
-        alignItems: 'center',
         width: '100%',
         paddingBottom: 400,
-        top: 400,
+        top: 380,
         backgroundColor: cores.azul,
-        
+        justifyContent:'center',
     },
     pesquisaTexto: {
         color: cores.branco,
-        fontSize: tamanhoFontes.media,
-        marginLeft: 10,
+        fontSize: tamanhoFontes.intermediaria,
+        padding: 10,
     }
 });

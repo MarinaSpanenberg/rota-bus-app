@@ -74,6 +74,7 @@ export default function BuscarRotas() {
                         value={pesquisaPlacas}
                         onSubmitEditing={buscarLinhaOnibus}
                         editable={true}
+                        style={BuscarRotasStyle.pesquisaTexto}
                     />
                 </View>
             ) : (
