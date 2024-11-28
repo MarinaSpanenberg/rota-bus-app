@@ -18,7 +18,7 @@ export default StyleSheet.create({
         alignItems: 'center',
         justifyContent: 'center',
         flexDirection: 'column',
-        marginTop: 100,
+        marginTop: 120,
         marginBottom: 5,
         color: cores.branco,
     },
@@ -37,7 +37,7 @@ export default StyleSheet.create({
     containerBotao: {
         alignItems: 'center',
         justifyContent: 'center',
-        flexDirection: 'row',
+        flexDirection: 'column',
         marginBottom: 10,
         marginTop: 30,
     },

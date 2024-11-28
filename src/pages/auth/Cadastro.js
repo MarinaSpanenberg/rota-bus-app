@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Alert, ActivityIndicator, TouchableOpacity } from 'react-native';
+import { View, Text, Alert, ActivityIndicator, TouchableOpacity, ScrollView } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import CadastroStyle from '../styles/CadastroStyle';
 import InputRB from '../../components/InputRB';
@@ -91,91 +91,98 @@ export default function Cadastro() {
 
   return (
     <View style={CadastroStyle.container}>
-      <BotaoVoltarOuSairRB acao={() => navigation.goBack()} />
-      <View style={CadastroStyle.inputContainer}>
-        <InputRB
-          titulo="Usuário para Passageiro"
-          value={username}
-          onChangeText={(text) => handleMutualInputForUser('username', text)}
-          editable={!interprisename}
-          textCustomStyle={[
-            CadastroStyle.textoInput,
-            interprisename ? CadastroStyle.textoInputNaoSelecionado : {}
-          ]}
-          inputCustomStyle={interprisename ? CadastroStyle.inputNaoSelecionado : {}}
-          style={[CadastroStyle.input]}
-        />
-
-        <Text style={CadastroStyle.ouTexto}> OU </Text>
-
-        <InputRB
-          titulo="Usuário para Empresa"
-          value={interprisename}
-          onChangeText={(text) => handleMutualInputForUser('interprisename', text)}
-          editable={!username}
-          textCustomStyle={[
-            CadastroStyle.textoInput,
-            username ? CadastroStyle.textoInputNaoSelecionado : {}
-          ]}
-          inputCustomStyle={username ? CadastroStyle.inputNaoSelecionado : {}}
-          style={CadastroStyle.input}
-        />
-        <InputRB
-          titulo="E-mail"
-          value={email}
-          onChangeText={setEmail}
-          keyboardType="email-address"
-          autoCapitalize="none"
-          textCustomStyle={CadastroStyle.textoInput}
-          style={CadastroStyle.input}
-        />
+      <ScrollView>
+        <BotaoVoltarOuSairRB acao={() => navigation.goBack()} />
+        <View style={CadastroStyle.inputContainer}>
           <InputRB
-            titulo="Senha"
-            secureTextEntry={!showPassword}
-            value={password}
-            onChangeText={setPassword}
-            textCustomStyle={CadastroStyle.textoInput}
-            style={CadastroStyle.input}
-            inputCustomStyle={{width: '84%'}}
-          > 
-          <TouchableOpacity onPress={togglePasswordVisibility}>
-            <Ionicons
-              name={!showPassword ? "eye-off-outline" : "eye-outline"}
-              size={24}
-              style={CadastroStyle.senhaIcon}
-              
-            />
-        </TouchableOpacity>
-        </InputRB>
-          
+            titulo="Usuário para Passageiro"
+            value={username}
+            onChangeText={(text) => handleMutualInputForUser('username', text)}
+            editable={!interprisename}
+            textCustomStyle={[
+              CadastroStyle.textoInput,
+              interprisename ? CadastroStyle.textoInputNaoSelecionado : {}
+            ]}
+            inputCustomStyle={interprisename ? CadastroStyle.inputNaoSelecionado : {}}
+            style={[CadastroStyle.input]}
+          />
+
+          <Text style={CadastroStyle.ouTexto}> OU </Text>
 
           <InputRB
-            titulo="Confirmar Senha"
-            secureTextEntry={!showPassword}
-            value={confirmPassword}
-            onChangeText={setConfirmPassword}
+            titulo="Usuário para Empresa"
+            value={interprisename}
+            onChangeText={(text) => handleMutualInputForUser('interprisename', text)}
+            editable={!username}
+            textCustomStyle={[
+              CadastroStyle.textoInput,
+              username ? CadastroStyle.textoInputNaoSelecionado : {}
+            ]}
+            inputCustomStyle={username ? CadastroStyle.inputNaoSelecionado : {}}
+            style={CadastroStyle.input}
+          />
+          <InputRB
+            titulo="E-mail"
+            value={email}
+            onChangeText={setEmail}
+            keyboardType="email-address"
+            autoCapitalize="none"
             textCustomStyle={CadastroStyle.textoInput}
             style={CadastroStyle.input}
-            inputCustomStyle={{width: '84%'}}
-          >
-          <TouchableOpacity onPress={togglePasswordVisibility} >
-            <Ionicons
-              name={!showPassword ? "eye-off-outline" : "eye-outline"}
-              size={24}
-              style={CadastroStyle.senhaIcon}
-            />
-        </TouchableOpacity>
-        </InputRB>
-      </View>
-      <View style={CadastroStyle.containerBotao}>
-        <BotaoRB
-          titulo="Criar conta"
-          acao={signUpWithEmail}
-          textoCustomEstilo={CadastroStyle.textoBotao}
-          botaoCustomEstilo={CadastroStyle.botao}
-        />
-      </View>
-      <Text style={CadastroStyle.textoInput}>Já tem uma conta? <Text onPress={() => navigation.navigate('TelaInicial')} style={CadastroStyle.textoInput}>Faça login</Text></Text>
+          />
+            <InputRB
+              titulo="Senha"
+              secureTextEntry={!showPassword}
+              value={password}
+              onChangeText={setPassword}
+              textCustomStyle={CadastroStyle.textoInput}
+              style={CadastroStyle.input}
+              inputCustomStyle={{width: '84%'}}
+            > 
+            <TouchableOpacity onPress={togglePasswordVisibility}>
+              <Ionicons
+                name={!showPassword ? "eye-off-outline" : "eye-outline"}
+                size={24}
+                style={CadastroStyle.senhaIcon}
+                
+              />
+          </TouchableOpacity>
+          </InputRB>
+            
+
+            <InputRB
+              titulo="Confirmar Senha"
+              secureTextEntry={!showPassword}
+              value={confirmPassword}
+              onChangeText={setConfirmPassword}
+              textCustomStyle={CadastroStyle.textoInput}
+              style={CadastroStyle.input}
+              inputCustomStyle={{width: '84%'}}
+            >
+            <TouchableOpacity onPress={togglePasswordVisibility} >
+              <Ionicons
+                name={!showPassword ? "eye-off-outline" : "eye-outline"}
+                size={24}
+                style={CadastroStyle.senhaIcon}
+              />
+          </TouchableOpacity>
+          </InputRB>
+        </View>
+        
+        <View style={CadastroStyle.containerBotao}>
+          <BotaoRB
+            titulo="Criar conta"
+            acao={signUpWithEmail}
+            textoCustomEstilo={CadastroStyle.textoBotao}
+            botaoCustomEstilo={CadastroStyle.botao}
+          />
+          <Text style={CadastroStyle.textoInput}>Já tem uma conta? 
+            <Text onPress={() => navigation.navigate('TelaInicial')} 
+              style={CadastroStyle.textoInput}>Faça login</Text>
+          </Text>
+
+        </View>
+        </ScrollView>
     </View>
   );
 }
